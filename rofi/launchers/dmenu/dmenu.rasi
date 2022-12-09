@@ -1,0 +1,96 @@
+
+configuration {
+	modi:                       "run";
+	drun-display-format:        "{name}";
+	hover-select: true;
+  me-select-entry: "";
+  me-accept-entry: [ MousePrimary, MouseSecondary, MouseDPrimary ];
+
+}
+
+@import                          "colors/colors.rasi"
+@import                          "~/.config/rofi/launchers/dmenu/fonts/fonts.rasi"
+
+
+* {
+    background-colour:           var(background);
+    foreground-colour:           var(foreground);
+    alternate-background:        var(background-alt);
+    selected-normal-background:  var(selected);
+    selected-normal-foreground:  var(background);
+}
+
+window {
+    transparency:                "real";
+    location:                    north;
+    fullscreen:                  false;
+    width:                       100%;
+		height: 										 37px;
+    children:                    [ horibox ];
+    enabled:                     true;
+    cursor:                      "default";
+    background-color:            @background-colour;
+}
+
+horibox {
+    background-color:            @background-colour;
+    text-color:                  @foreground-colour;
+    orientation:                 horizontal;
+    children:                    [ "prompt", "textbox-prompt-colon","entry", "listview" ];
+}
+
+prompt {
+		enabled: 										 false;
+		}
+
+textbox-prompt-colon {
+    enabled:                     false;
+}
+entry {
+    enabled:                     true;
+    padding:                     7px;
+    expand:                      false;
+    width:                       10em;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder:                 " Search...";
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       100;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      horizontal;
+    reverse:                     false;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    padding:                     5px;
+    background-color:            transparent;
+    text-color:                  @foreground-colour;
+    cursor:                      pointer;
+}
+element selected.normal {
+    background-color:            var(selected-normal-background);
+    text-color:                  var(selected-normal-foreground);
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+}
+
+textbox {
+    padding:                     8px;
+    background-color:            @alternate-background;
+    text-color:                  @foreground-colour;
+}
