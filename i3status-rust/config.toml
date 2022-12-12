@@ -1,0 +1,68 @@
+icons_format = "{icon}"
+
+[theme]
+theme = "dracula"
+[theme.overrides]
+idle_bg = "#123456"
+idle_fg = "#abcdef"
+
+[icons]
+icons = "awesome5"
+[icons.overrides]
+
+[[block]]
+block = "custom"
+command = "echo 'P0m32Kun'"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon $utilization "
+format_alt = " $icon $frequency{ $boost|} "
+
+[[block]]
+block = "disk_space"
+info_type = "available"
+alert_unit = "GB"
+alert = 10.0
+warning = 15.0
+format = " $icon $available "
+format_alt = " $icon $available / $total "
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used_percents.eng(2) "
+format_alt = " $icon_swap $swap_used_percents.eng(2) "
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 5
+format = " %a %d/%m %R "
+
+[[block]]
+block = "battery"
+format = " $icon $percentage "
+
+[[block]]
+block = "menu"
+text = "  \uf011  "
+[[block.items]]
+display = " -&gt;   Lock    &lt;-"
+cmd = "betterlockscreen -l blur"
+[[block.items]]
+display = " -&gt;   Sleep   &lt;-"
+cmd = "systemctl suspend"
+[[block.items]]
+display = " -&gt; Power Off &lt;-"
+cmd = "poweroff"
+confirm_msg = "Are you sure you want to power off?"
+[[block.items]]
+display = " -&gt;  Reboot   &lt;-"
+cmd = "reboot"
+confirm_msg = "Are you sure you want to reboot?"
